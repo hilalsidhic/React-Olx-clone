@@ -1,20 +1,45 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 
 import Logo from '../../olx-logo.png';
+import { FirebaseContext } from '../../Store/FirebaseContext';
 import './Login.css';
 
 function Login() {
+  const {firebase} = useContext(FirebaseContext)
+  const [Email, setEmail] = useState('')
+  const [Password, setPassword] = useState('')
+  const handleLogin=(e)=>{
+    e.preventDefault();
+    firebase.auth().signInWithEmailAndPassword(Email,Password)
+    .then((userCredential) => {
+    // Signed in
+    var user = userCredential.user;
+    console.log(user)
+    // ...
+     })
+    .catch((error) => {
+    var errorCode = error.code;
+    console.log(errorCode)
+    var errorMessage = error.message;
+    console.log(errorMessage)
+  });
+  }
+
   return (
     <div>
       <div className="loginParentDiv">
         <img width="200px" height="200px" src={Logo}></img>
-        <form>
+        <form onClick={handleLogin}>
           <label htmlFor="fname">Email</label>
           <br />
           <input
             className="input"
             type="email"
             id="fname"
+            value={Email}
+            onChange={(e)=>{
+              setEmail(e.target.value)
+            }}
             name="email"
             defaultValue="John"
           />
@@ -25,6 +50,10 @@ function Login() {
             className="input"
             type="password"
             id="lname"
+            value={Password}
+            onChange={(e)=>{
+              setPassword(e.target.value)
+            }}
             name="password"
             defaultValue="Doe"
           />
