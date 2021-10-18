@@ -1,7 +1,7 @@
 import React, { useState,useContext } from 'react';
 import { useHistory } from 'react-router';
 import Logo from '../../olx-logo.png';
-import { FirebaseContext } from '../../Store/FirebaseContext';
+import { FirebaseContext } from '../../Store/Context';
 import './Signup.css';
 
 export default function Signup() {
