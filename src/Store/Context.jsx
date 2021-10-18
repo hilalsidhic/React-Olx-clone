@@ -5,9 +5,9 @@ export const FirebaseContext= createContext(null)
 export const AuthContext= createContext(null)
 
 export default function Context({children}){
-    const [User, setUser] = useState('hello')
+    const [User, setUser] = useState(null)
     return(
-        <AuthContext.Provider value={{User}}>
+        <AuthContext.Provider value={{User,setUser}}>
             {children}
         </AuthContext.Provider>
     )
