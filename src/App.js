@@ -3,7 +3,7 @@ import './App.css';
 import Signup from './Pages/Signup'
 import { BrowserRouter as Router,Route,useHistory } from 'react-router-dom'
 import Login from './Pages/Login'
-
+import Create from './Pages/Create'
 /**
  * ?  =====Import Components=====
  */
@@ -33,13 +33,16 @@ function App() {
     <div>
       <Router>
         <Route exact path='/'>
-         <Home/>
+         <Home />
        </Route>
        <Route path='/signup'>
          <Signup />
        </Route>
        <Route path='/login'>
-         <Login/>
+         <Login />
+       </Route>
+       <Route path='/create'>
+         <Create />
        </Route>
       </Router>
     </div>
