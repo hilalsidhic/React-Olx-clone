@@ -4,11 +4,14 @@ import Signup from './Pages/Signup'
 import { BrowserRouter as Router,Route,useHistory } from 'react-router-dom'
 import Login from './Pages/Login'
 import Create from './Pages/Create'
+import ViewPost from './Pages/ViewPost'
+import Post from './Store/postContext';
 /**
  * ?  =====Import Components=====
  */
 import Home from './Pages/Home';
 import { AuthContext, FirebaseContext } from './Store/Context';
+
 
 
 function App() {
@@ -31,6 +34,7 @@ function App() {
   })
   return (
     <div>
+      <Post>
       <Router>
         <Route exact path='/'>
          <Home />
@@ -44,7 +48,11 @@ function App() {
        <Route path='/create'>
          <Create />
        </Route>
+       <Route path='/view'>
+         <ViewPost />
+       </Route>
       </Router>
+      </Post>
     </div>
   );
 }
